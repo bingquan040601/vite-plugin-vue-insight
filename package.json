@@ -42,6 +42,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bingquan040601/vite-plugin-vue-insight"
+    "url": "git+https://github.com/bingquan040601/vite-plugin-vue-insight.git"
   }
 }
