@@ -1,0 +1,47 @@
+{
+  "name": "vite-plugin-vue-insight",
+  "version": "0.1.0",
+  "description": "点击定位源码、高亮 DOM、查看组件状态、分享链接 — Vue 3 + Vite 调试助手",
+  "type": "module",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js"
+    }
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0 || ^6.0.0",
+    "vue": "^3.2.0"
+  },
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.2.0"
+  },
+  "keywords": [
+    "vite-plugin",
+    "vue",
+    "inspector",
+    "debug",
+    "devtools",
+    "source-location",
+    "component-state"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "HuangBingQuan",
+    "email": "17671241237@163.com",
+    "url": "https://github.com/bingquan040601"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bingquan040601/vite-plugin-vue-insight"
+  }
+}
