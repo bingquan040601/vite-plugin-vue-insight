@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-vue-insight",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "点击定位源码、高亮 DOM、查看组件状态、分享链接 — Vue 3 + Vite 调试助手",
   "type": "module",
   "main": "./src/index.js",
