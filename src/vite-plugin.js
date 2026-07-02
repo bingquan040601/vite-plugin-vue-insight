@@ -201,10 +201,12 @@ export function vueInsightPlugin(options = {}) {
             return
           }
 
-          const parts = fileParam.split(':')
-          const filePath = parts[0]
-          const line = parts[1] || '1'
-          const column = parts[2] || '1'
+          // Windows 绝对路径如 C:/path/to/file.vue:10:1，需从右侧拆分行号列号
+          const lastColon = fileParam.lastIndexOf(':')
+          const secondLastColon = fileParam.lastIndexOf(':', lastColon - 1)
+          const filePath = fileParam.substring(0, secondLastColon)
+          const line = fileParam.substring(secondLastColon + 1, lastColon)
+          const column = fileParam.substring(lastColon + 1) || '1'
 
           const { spawn } = await import('node:child_process')
 
@@ -231,7 +233,15 @@ export function vueInsightPlugin(options = {}) {
               break
           }
 
-          const child = spawn(cmd, args, { stdio: 'ignore', detached: true })
+          const child = spawn(cmd, args, {
+            stdio: 'ignore',
+            detached: true,
+            shell: process.platform === 'win32',
+          })
+          child.on('error', (err) => {
+            console.warn('[vue-insight] 无法启动编辑器 (' + cmd + '): ' + err.message)
+            console.warn('[vue-insight] 请确认 ' + cmd + ' 已安装且已加入 PATH 环境变量')
+          })
           child.unref()
 
           res.statusCode = 200
